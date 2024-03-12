@@ -8,7 +8,7 @@ def get_conversation_topics():
     url = "https://top.baidu.com/board?tab=realtime"
 
     # Send an HTTP GET request to the URL
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
 
     # Check if the request was successful
     if response.status_code == 200:
