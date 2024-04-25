@@ -1,7 +1,8 @@
 '''
 The Game class representing the game logic.
 '''
-import random
+import secrets
+
 class Game:
     def __init__(self):
         self.player_score = 0
@@ -21,7 +22,7 @@ class Game:
             self.computer_score += 1
     def get_computer_choice(self):
         choices = ["rock", "paper", "scissors"]
-        return random.choice(choices)
+        return secrets.choice(choices)
     def determine_winner(self, player_choice, computer_choice):
         if player_choice == computer_choice:
             return "tie"

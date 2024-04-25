@@ -1,6 +1,7 @@
 import tkinter as tk
-import random
 from tetris_shapes import ShapeI, ShapeJ, ShapeL, ShapeO, ShapeS, ShapeT, ShapeZ
+import secrets
+
 class Tetris:
     def __init__(self, root):
         self.root = root
@@ -84,7 +85,7 @@ class Tetris:
             self.board.grid.insert(0, [0] * self.board.cols)
     def generate_shape(self):
         shapes = [ShapeI, ShapeJ, ShapeL, ShapeO, ShapeS, ShapeT, ShapeZ]
-        shape = random.choice(shapes)
+        shape = secrets.choice(shapes)
         return shape()
 class Board:
     def __init__(self):

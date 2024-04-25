@@ -2,7 +2,8 @@
 This file contains the Scoreboard class, which handles the game's scoreboard.
 '''
 import pygame
-import random
+import secrets
+
 class Scoreboard:
     def __init__(self):
         self.score = 0
@@ -10,7 +11,7 @@ class Scoreboard:
         self.score_text = self.font.render('Score: ' + str(self.score), 1, (255, 255, 255))
     def update_score(self):
         # Increase the score by a random amount between 1 and 6
-        self.score += random.randint(1, 6)
+        self.score += secrets.SystemRandom().randint(1, 6)
         # Update the score text
         self.score_text = self.font.render('Score: ' + str(self.score), 1, (255, 255, 255))
         # Check if the score has reached 100

@@ -2,7 +2,8 @@
 Player class for managing the player character.
 '''
 import pygame
-import random
+import secrets
+
 class Player:
     def __init__(self, x, y):
         self.x = x
@@ -26,6 +27,6 @@ class Player:
         elif level.is_door(self.x, self.y):
             level.next_level(self)
         elif level.is_treasure(self.x, self.y):
-            self.hp += random.randint(20, 30)
+            self.hp += secrets.SystemRandom().randint(20, 30)
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
