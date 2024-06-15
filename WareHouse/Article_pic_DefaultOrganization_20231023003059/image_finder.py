@@ -1,8 +1,9 @@
 '''
 This file contains the ImageFinder class which is responsible for finding an image related to the article.
 '''
-import requests
 from bs4 import BeautifulSoup
+from security import safe_requests
+
 class ImageFinder:
     def __init__(self, article):
         self.article = article
@@ -11,7 +12,7 @@ class ImageFinder:
         # In a real application, you would want to use a more sophisticated method, such as a machine learning model trained to find relevant images.
         query = self.article.split(' ')[0]  # Use the first word of the article as the query
         url = f"https://www.google.com/search?q={query}&tbm=isch"
-        response = requests.get(url)
+        response = safe_requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
         image_url = soup.find('img')['src']
         return image_url

@@ -1,10 +1,8 @@
-import requests
 from bs4 import BeautifulSoup
 import openai
-from openai import OpenAI
 import wikipediaapi
 import os
-import time
+from security import safe_requests
 
 self_api_key = os.environ.get('OPENAI_API_KEY')
 BASE_URL = os.environ.get('BASE_URL')
@@ -23,7 +21,7 @@ def get_baidu_baike_content(keyword):
     # design api by the baidubaike
     url = f'https://baike.baidu.com/item/{keyword}'
     # post request
-    response = requests.get(url)
+    response = safe_requests.get(url)
 
     # Beautiful Soup part for the html content
     soup = BeautifulSoup(response.content, 'html.parser')
