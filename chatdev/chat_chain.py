@@ -276,7 +276,7 @@ class ChatChain:
 
             # execute git log
             command = "cd {}; git log".format(self.chat_env.env_dict["directory"])
-            completed_process = subprocess.run(command, shell=True, text=True, stdout=subprocess.PIPE)
+            completed_process = subprocess.run(command, shell=False, text=True, stdout=subprocess.PIPE)
 
             if completed_process.returncode == 0:
                 log_output = completed_process.stdout

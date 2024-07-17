@@ -71,7 +71,7 @@ class ChatEnv:
         if "ModuleNotFoundError" in test_reports:
             for match in re.finditer(r"No module named '(\S+)'", test_reports, re.DOTALL):
                 module = match.group(1)
-                subprocess.Popen("pip install {}".format(module), shell=True).wait()
+                subprocess.Popen("pip install {}".format(module), shell=False).wait()
                 log_visualize("**[CMD Execute]**\n\n[CMD] pip install {}".format(module))
 
     def set_directory(self, directory):
@@ -103,16 +103,14 @@ class ChatEnv:
                 command = "cd {} && dir && python main.py".format(directory)
                 process = subprocess.Popen(
                     command,
-                    shell=True,
-                    stdout=subprocess.PIPE,
+                    shell=False, stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
                 )
             else:
                 command = "cd {}; ls -l; python3 main.py;".format(directory)
                 process = subprocess.Popen(command,
-                                           shell=True,
-                                           preexec_fn=os.setsid,
+                                           shell=False, preexec_fn=os.setsid,
                                            stdout=subprocess.PIPE,
                                            stderr=subprocess.PIPE
                                            )
