@@ -2,8 +2,9 @@
 This file handles the game logic and manages the game objects.
 '''
 import pygame
-import random
 from sprites import Block, Obstacle
+import secrets
+
 # Initialize pygame
 pygame.init()
 # Set up the display
@@ -20,7 +21,7 @@ block_size = 30
 block_x = 50
 block_y = screen_height - block_size
 obstacle_width = 50
-obstacle_height = random.randint(100, 300)
+obstacle_height = secrets.SystemRandom().randint(100, 300)
 obstacle_x = screen_width
 obstacle_y = screen_height - obstacle_height
 obstacle_speed = 5
@@ -48,7 +49,7 @@ while running:
                     game_over = False
                     score = 0
                     block.sprite.rect.y = screen_height - block_size
-                    obstacle_height = random.randint(100, 300)
+                    obstacle_height = secrets.SystemRandom().randint(100, 300)
                     obstacle_y = screen_height - obstacle_height
                     obstacle_x = screen_width
                     block.sprite.speed_y = 0
@@ -59,7 +60,7 @@ while running:
         # Check if obstacle is off the screen
         if obstacles.sprite.rect.x + obstacle_width < 0:
             obstacles.sprite.rect.x = screen_width
-            obstacle_height = random.randint(100, 300)
+            obstacle_height = secrets.SystemRandom().randint(100, 300)
             obstacles.sprite.rect.height = obstacle_height
             obstacles.sprite.rect.y = screen_height - obstacle_height
             score += 1

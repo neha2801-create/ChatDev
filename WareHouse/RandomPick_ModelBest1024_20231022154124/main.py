@@ -2,7 +2,8 @@
 Design a software that allows users to input several strings. Then the user randomly chooses one.
 '''
 from tkinter import Tk, Label, Entry, Button
-import random
+import secrets
+
 # Create a Tkinter window
 window = Tk()
 window.title("String Chooser")
@@ -15,7 +16,7 @@ entry.pack()
 # Create a button to trigger the random selection
 def choose_string():
     strings = entry.get().split(",")
-    chosen_string = random.choice(strings)
+    chosen_string = secrets.choice(strings)
     result_label.config(text=f"Randomly chosen string: {chosen_string}")
 button = Button(window, text="Choose", command=choose_string)
 button.pack()

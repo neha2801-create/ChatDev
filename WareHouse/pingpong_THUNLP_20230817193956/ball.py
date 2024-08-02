@@ -2,14 +2,15 @@
 This file contains the Ball class that represents the game ball.
 '''
 import pygame
-import random
+import secrets
+
 class Ball:
     def __init__(self, x, y):
         self.radius = 10
         self.x = x
         self.y = y
-        self.speed_x = random.choice([-2, 2])
-        self.speed_y = random.choice([-2, 2])
+        self.speed_x = secrets.choice([-2, 2])
+        self.speed_y = secrets.choice([-2, 2])
         self.rect = pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius * 2, self.radius * 2)
     def update(self, paddle1, paddle2):
         self.x += self.speed_x
@@ -28,7 +29,7 @@ class Ball:
     def reset(self):
         self.x = 400
         self.y = 200
-        self.speed_x = random.choice([-2, 2])
-        self.speed_y = random.choice([-2, 2])
+        self.speed_x = secrets.choice([-2, 2])
+        self.speed_y = secrets.choice([-2, 2])
         self.rect.x = self.x - self.radius
         self.rect.y = self.y - self.radius
