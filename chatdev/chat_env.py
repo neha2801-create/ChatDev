@@ -13,6 +13,7 @@ from chatdev.codes import Codes
 from chatdev.documents import Documents
 from chatdev.roster import Roster
 from chatdev.utils import log_visualize
+from security import safe_command
 
 try:
     from openai.types.chat.chat_completion_message_tool_call import ChatCompletionMessageToolCall
@@ -71,7 +72,7 @@ class ChatEnv:
         if "ModuleNotFoundError" in test_reports:
             for match in re.finditer(r"No module named '(\S+)'", test_reports, re.DOTALL):
                 module = match.group(1)
-                subprocess.Popen("pip install {}".format(module), shell=True).wait()
+                safe_command.run(subprocess.Popen, "pip install {}".format(module), shell=True).wait()
                 log_visualize("**[CMD Execute]**\n\n[CMD] pip install {}".format(module))
 
     def set_directory(self, directory):
@@ -101,8 +102,7 @@ class ChatEnv:
             # check if we are on windows or linux
             if os.name == 'nt':
                 command = "cd {} && dir && python main.py".format(directory)
-                process = subprocess.Popen(
-                    command,
+                process = safe_command.run(subprocess.Popen, command,
                     shell=True,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
@@ -110,7 +110,7 @@ class ChatEnv:
                 )
             else:
                 command = "cd {}; ls -l; python3 main.py;".format(directory)
-                process = subprocess.Popen(command,
+                process = safe_command.run(subprocess.Popen, command,
                                            shell=True,
                                            preexec_fn=os.setsid,
                                            stdout=subprocess.PIPE,

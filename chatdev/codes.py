@@ -4,6 +4,7 @@ import re
 import subprocess
 
 from chatdev.utils import log_visualize
+from security import safe_command
 
 
 class Codes:
@@ -99,7 +100,7 @@ class Codes:
             log_git_info += "cd {}; git add .\n".format(self.directory)
 
             # check if there exist diff
-            completed_process = subprocess.run("cd {}; git status".format(self.directory), shell=True, text=True,
+            completed_process = safe_command.run(subprocess.run, "cd {}; git status".format(self.directory), shell=True, text=True,
                                                stdout=subprocess.PIPE)
             if "nothing to commit" in completed_process.stdout:
                 self.version -= 1.0
