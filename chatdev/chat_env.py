@@ -202,7 +202,7 @@ class ChatEnv:
 
     def generate_images_from_codes(self):
         def download(img_url, file_name):
-            r = requests.get(img_url)
+            r = requests.get(img_url, timeout=60)
             filepath = os.path.join(self.env_dict['directory'], file_name)
             if os.path.exists(filepath):
                 os.remove(filepath)
@@ -245,7 +245,7 @@ class ChatEnv:
 
     def get_proposed_images_from_message(self, messages):
         def download(img_url, file_name):
-            r = requests.get(img_url)
+            r = requests.get(img_url, timeout=60)
             filepath = os.path.join(self.env_dict['directory'], file_name)
             if os.path.exists(filepath):
                 os.remove(filepath)
