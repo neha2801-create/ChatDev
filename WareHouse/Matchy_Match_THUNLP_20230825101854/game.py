@@ -4,6 +4,8 @@ This file contains the Game class which represents the memory game.
 import tkinter as tk
 from tkinter import messagebox
 from card import CardItem
+import secrets
+
 class Game:
     def __init__(self, root):
         self.root = root
@@ -25,9 +27,7 @@ class Game:
             self.cards.append(card1)
             self.cards.append(card2)
     def shuffle_cards(self):
-        # Shuffle the cards
-        import random
-        random.shuffle(self.cards)
+        secrets.SystemRandom().shuffle(self.cards)
     def create_board(self):
         # Create the card buttons on the board
         self.buttons = []

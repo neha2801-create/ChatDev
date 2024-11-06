@@ -5,7 +5,8 @@ import pygame
 from player import Player
 from obstacle import Obstacle
 from powerup import Powerup
-import random
+import secrets
+
 class Game:
     def __init__(self):
         self.screen_width = 800
@@ -59,15 +60,15 @@ class Game:
     def spawn_obstacles(self):
         if len(self.obstacles) < 5:
             x = self.screen_width
-            y = random.randint(400, 500)
-            width = random.randint(50, 100)
-            height = random.randint(50, 100)
+            y = secrets.SystemRandom().randint(400, 500)
+            width = secrets.SystemRandom().randint(50, 100)
+            height = secrets.SystemRandom().randint(50, 100)
             obstacle = Obstacle(x, y, width, height)
             self.obstacles.append(obstacle)
     def spawn_powerups(self):
         if len(self.powerups) < 2:
             x = self.screen_width
-            y = random.randint(300, 400)
+            y = secrets.SystemRandom().randint(300, 400)
             width = 50
             height = 50
             powerup = Powerup(x, y, width, height)

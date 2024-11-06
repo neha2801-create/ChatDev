@@ -2,7 +2,8 @@
 Greedy Snake Game
 '''
 import pygame
-import random
+import secrets
+
 # Initialize the game
 pygame.init()
 # Set up the game window
@@ -49,8 +50,8 @@ class Snake:
 # Define the Food class
 class Food:
     def __init__(self):
-        self.x = random.randint(0, (window_width - snake_size) // snake_size) * snake_size
-        self.y = random.randint(0, (window_height - snake_size) // snake_size) * snake_size
+        self.x = secrets.SystemRandom().randint(0, (window_width - snake_size) // snake_size) * snake_size
+        self.y = secrets.SystemRandom().randint(0, (window_height - snake_size) // snake_size) * snake_size
     def draw(self):
         pygame.draw.rect(window, RED, (self.x, self.y, snake_size, snake_size))
 # Initialize the snake and food

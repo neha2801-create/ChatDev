@@ -2,7 +2,8 @@
 Player module that defines the HumanPlayer and AIPlayer classes.
 '''
 import sys
-import random
+import secrets
+
 class Player:
     def __init__(self, name, chips):
         self.name = name
@@ -84,18 +85,18 @@ class HumanPlayer(Player):
             
 class AIPlayer(Player):
     def make_decision(self, current_bet):
-        if random.random() < 0.05:  # 5% chance of making a random decision
-            return random.choice(["fold", "check", "bet", "call", "raise"])
+        if secrets.SystemRandom().random() < 0.05:  # 5% chance of making a random decision
+            return secrets.choice(["fold", "check", "bet", "call", "raise"])
         else:
             if current_bet > self.chips:
-                return random.choice(["call, fold"])
+                return secrets.choice(["call, fold"])
             elif current_bet == 0:
-                return random.choice(["check", "raise"])
+                return secrets.choice(["check", "raise"])
             elif current_bet > self.previous_bet:
-                return random.choice(["fold", "call", "raise"])
+                return secrets.choice(["fold", "call", "raise"])
             else:
-                return random.choice(["check", "call", "raise"])
+                return secrets.choice(["check", "call", "raise"])
     def get_raise_amount(self, current_bet):
-        therand = random.randint(0, 100)
+        therand = secrets.SystemRandom().randint(0, 100)
         print(f"Raise increment: {therand}")
         return therand
