@@ -23,7 +23,7 @@ def get_baidu_baike_content(keyword):
     # design api by the baidubaike
     url = f'https://baike.baidu.com/item/{keyword}'
     # post request
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
 
     # Beautiful Soup part for the html content
     soup = BeautifulSoup(response.content, 'html.parser')
