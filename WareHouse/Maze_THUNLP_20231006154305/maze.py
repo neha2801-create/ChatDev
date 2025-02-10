@@ -1,8 +1,9 @@
 '''
 This file contains the Maze class that represents the maze in the game.
 '''
-import random
 import tkinter as tk
+import secrets
+
 class Maze:
     def __init__(self):
         self.rows = 10
@@ -17,7 +18,7 @@ class Maze:
         # Generate a random maze
         for row in range(self.rows):
             for col in range(self.cols):
-                if random.random() < 0.3:
+                if secrets.SystemRandom().random() < 0.3:
                     self.maze[row][col] = 1
     def move_player(self, direction):
         if direction == "up" and self.player_row > 0 and self.maze[self.player_row-1][self.player_col] != 1:

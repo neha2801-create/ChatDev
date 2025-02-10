@@ -1,19 +1,20 @@
 '''
 This file contains the Aquarium class which represents the virtual aquarium.
 '''
-import random
+import secrets
+
 class Fish:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.speed = random.randint(1, 5)
+        self.speed = secrets.SystemRandom().randint(1, 5)
     def update(self):
         self.x += self.speed
 class Effect:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.speed = random.randint(1, 3)
+        self.speed = secrets.SystemRandom().randint(1, 3)
     def update(self):
         self.x += self.speed
 class Aquarium:
@@ -21,12 +22,12 @@ class Aquarium:
         self.fishes = []
         self.effects = []
         for _ in range(10):
-            x = random.randint(0, 780)
-            y = random.randint(0, 580)
+            x = secrets.SystemRandom().randint(0, 780)
+            y = secrets.SystemRandom().randint(0, 580)
             self.fishes.append(Fish(x, y))
         for _ in range(5):
-            x = random.randint(0, 780)
-            y = random.randint(0, 580)
+            x = secrets.SystemRandom().randint(0, 780)
+            y = secrets.SystemRandom().randint(0, 580)
             self.effects.append(Effect(x, y))
     def update(self):
         for fish in self.fishes:

@@ -2,8 +2,9 @@
 This is the main file of the maze generator application.
 '''
 import tkinter as tk
-import random
 from maze import Maze
+import secrets
+
 class MazeGeneratorApp:
     def __init__(self, master):
         self.master = master
@@ -21,10 +22,10 @@ class MazeGeneratorApp:
         self.maze.generate()
         # Draw the maze on the canvas
         cell_size = 20
-        start_row = random.randint(0, self.maze.rows - 1)
-        start_col = random.randint(0, self.maze.cols - 1)
-        end_row = random.randint(0, self.maze.rows - 1)
-        end_col = random.randint(0, self.maze.cols - 1)
+        start_row = secrets.SystemRandom().randint(0, self.maze.rows - 1)
+        start_col = secrets.SystemRandom().randint(0, self.maze.cols - 1)
+        end_row = secrets.SystemRandom().randint(0, self.maze.rows - 1)
+        end_col = secrets.SystemRandom().randint(0, self.maze.cols - 1)
         for row in range(self.maze.rows):
             for col in range(self.maze.cols):
                 x1 = col * cell_size

@@ -2,7 +2,8 @@
 This is the main file for the running game.
 '''
 import pygame
-import random
+import secrets
+
 # Initialize pygame
 pygame.init()
 # Set up the display
@@ -20,7 +21,7 @@ block_x = 50
 block_y = screen_height - block_size
 block_y_speed = 0
 obstacle_width = 50
-obstacle_height = random.randint(100, 300)
+obstacle_height = secrets.SystemRandom().randint(100, 300)
 obstacle_x = screen_width
 obstacle_y = screen_height - obstacle_height
 obstacle_speed = 5
@@ -53,7 +54,7 @@ while running:
                     game_over = False
                     score = 0
                     block_y = screen_height - block_size
-                    obstacle_height = random.randint(100, 300)
+                    obstacle_height = secrets.SystemRandom().randint(100, 300)
                     obstacle_y = screen_height - obstacle_height
                     # Reset obstacle position
                     obstacle_x = screen_width
@@ -68,7 +69,7 @@ while running:
         # Check if obstacle is off the screen
         if obstacle_x + obstacle_width < 0:
             obstacle_x = screen_width
-            obstacle_height = random.randint(100, 300)
+            obstacle_height = secrets.SystemRandom().randint(100, 300)
             obstacle_y = screen_height - obstacle_height
             score += 1
         # Check for collision

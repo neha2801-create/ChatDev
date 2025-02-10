@@ -1,8 +1,9 @@
 '''
 This file contains the Maze class that represents the maze.
 '''
-import random
 import tkinter as tk
+import secrets
+
 class Cell:
     def __init__(self, row, col):
         self.row = row
@@ -26,7 +27,7 @@ class Maze:
         while True:
             neighbors = self.get_unvisited_neighbors(current)
             if len(neighbors) > 0:
-                neighbor = random.choice(neighbors)
+                neighbor = secrets.choice(neighbors)
                 stack.append(current)
                 self.remove_walls(current, neighbor)
                 current = neighbor

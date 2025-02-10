@@ -3,7 +3,8 @@ This file contains a function to generate random praises.
 The function checks the content of each line and generates a relevant praise. 
 If the line does not contain any recognizable pattern, a random praise is generated.
 '''
-import random
+import secrets
+
 def generate_praise(line):
     if 'def' in line:
         return "Incredible function definition!"
@@ -15,4 +16,4 @@ def generate_praise(line):
         return "Excellent variable assignment!"
     else:
         praises = ["Remarkable coding!", "Innovative approach!", "Exceptional understanding of concepts!"]
-        return random.choice(praises)
+        return secrets.choice(praises)

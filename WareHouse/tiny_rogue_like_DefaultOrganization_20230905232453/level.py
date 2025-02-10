@@ -2,7 +2,8 @@
 Level class for managing the game level.
 '''
 import pygame
-import random
+import secrets
+
 class Level:
     def __init__(self):
         self.width = 80
@@ -16,11 +17,11 @@ class Level:
     def generate_level(self):
         for y in range(self.height):
             for x in range(self.width):
-                if random.random() < 0.3:
+                if secrets.SystemRandom().random() < 0.3:
                     self.level_data[y][x] = 1
-                elif random.random() < 0.05:
+                elif secrets.SystemRandom().random() < 0.05:
                     self.level_data[y][x] = 2
-                elif random.random() < 0.05:
+                elif secrets.SystemRandom().random() < 0.05:
                     self.level_data[y][x] = 3
                 else:
                     self.level_data[y][x] = 0
