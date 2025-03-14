@@ -13,6 +13,7 @@ from chatdev.chat_env import ChatEnv, ChatEnvConfig
 from chatdev.statistics import get_info
 from camel.web_spider import modal_trans
 from chatdev.utils import log_visualize, now
+from security import safe_command
 
 
 def check_bool(s):
@@ -276,7 +277,7 @@ class ChatChain:
 
             # execute git log
             command = "cd {}; git log".format(self.chat_env.env_dict["directory"])
-            completed_process = subprocess.run(command, shell=True, text=True, stdout=subprocess.PIPE)
+            completed_process = safe_command.run(subprocess.run, command, shell=True, text=True, stdout=subprocess.PIPE)
 
             if completed_process.returncode == 0:
                 log_output = completed_process.stdout
