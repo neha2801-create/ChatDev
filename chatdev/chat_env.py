@@ -7,12 +7,12 @@ import time
 from typing import Dict
 
 import openai
-import requests
 
 from chatdev.codes import Codes
 from chatdev.documents import Documents
 from chatdev.roster import Roster
 from chatdev.utils import log_visualize
+from security import safe_requests
 
 try:
     from openai.types.chat.chat_completion_message_tool_call import ChatCompletionMessageToolCall
@@ -202,7 +202,7 @@ class ChatEnv:
 
     def generate_images_from_codes(self):
         def download(img_url, file_name):
-            r = requests.get(img_url)
+            r = safe_requests.get(img_url)
             filepath = os.path.join(self.env_dict['directory'], file_name)
             if os.path.exists(filepath):
                 os.remove(filepath)
@@ -245,7 +245,7 @@ class ChatEnv:
 
     def get_proposed_images_from_message(self, messages):
         def download(img_url, file_name):
-            r = requests.get(img_url)
+            r = safe_requests.get(img_url)
             filepath = os.path.join(self.env_dict['directory'], file_name)
             if os.path.exists(filepath):
                 os.remove(filepath)
