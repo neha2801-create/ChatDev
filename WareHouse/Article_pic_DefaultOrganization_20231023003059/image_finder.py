@@ -11,7 +11,7 @@ class ImageFinder:
         # In a real application, you would want to use a more sophisticated method, such as a machine learning model trained to find relevant images.
         query = self.article.split(' ')[0]  # Use the first word of the article as the query
         url = f"https://www.google.com/search?q={query}&tbm=isch"
-        response = requests.get(url)
+        response = requests.get(url, timeout=60)
         soup = BeautifulSoup(response.text, 'html.parser')
         image_url = soup.find('img')['src']
         return image_url

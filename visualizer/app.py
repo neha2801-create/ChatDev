@@ -14,7 +14,7 @@ port = [8000]
 def send_msg(role, text):
     try:
         data = {"role": role, "text": text}
-        response = requests.post(f"http://127.0.0.1:{port[-1]}/send_message", json=data)
+        response = requests.post(f"http://127.0.0.1:{port[-1]}/send_message", json=data, timeout=60)
     except:
         logging.info("flask app.py did not start for online log")
 
