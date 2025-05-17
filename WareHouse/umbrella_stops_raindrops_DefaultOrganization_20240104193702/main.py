@@ -1,6 +1,7 @@
 import tkinter as tk
 from raindrop import Raindrop
-import random
+import secrets
+
 class MainApp:
     def __init__(self, root):
         self.root = root
@@ -31,7 +32,7 @@ class MainApp:
             return True
         return False
     def create_raindrop(self):
-        x = random.randint(0, self.canvas.winfo_width())  # Random x position
+        x = secrets.SystemRandom().randint(0, self.canvas.winfo_width())  # Random x position
         raindrop = Raindrop(self.canvas, x)
         self.raindrops.append(raindrop)
         self.canvas.after(10, self.create_raindrop)

@@ -1,8 +1,9 @@
 '''
 This file contains the TypingExercise class which manages the typing exercises.
 '''
-import random
 import time
+import secrets
+
 class TypingExercise:
     def __init__(self, progress_tracker):
         self.exercises = [
@@ -14,7 +15,7 @@ class TypingExercise:
         ]
         self.progress_tracker = progress_tracker
     def start_exercise(self):
-        exercise = random.choice(self.exercises)
+        exercise = secrets.choice(self.exercises)
         print("Type the following sentence:")
         print(exercise)
         print("Press Enter to start.")

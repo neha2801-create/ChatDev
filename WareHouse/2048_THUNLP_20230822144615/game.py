@@ -1,7 +1,8 @@
 '''
 Game Logic
 '''
-import random
+import secrets
+
 class Game:
     def __init__(self):
         self.grid = [[0] * 10 for _ in range(10)]
@@ -14,8 +15,8 @@ class Game:
                 if self.grid[row][col] == 0:
                     empty_spots.append((row, col))
         if empty_spots:
-            row, col = random.choice(empty_spots)
-            self.grid[row][col] = random.choice([2, 4])
+            row, col = secrets.choice(empty_spots)
+            self.grid[row][col] = secrets.choice([2, 4])
     def move_up(self):
         self.move_tiles("up")
         self.merge_tiles("up")

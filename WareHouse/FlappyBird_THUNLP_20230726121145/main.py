@@ -2,7 +2,8 @@
 Flappy Bird Game
 '''
 import tkinter as tk
-import random
+import secrets
+
 class FlappyBirdGame:
     def __init__(self):
         self.window = tk.Tk()
@@ -21,8 +22,8 @@ class FlappyBirdGame:
         if not self.is_game_over:
             self.bird.jump()
     def create_pipe(self):
-        if random.random() < 0.01:
-            gap_height = random.randint(100, 250)  # Decrease the gap height range
+        if secrets.SystemRandom().random() < 0.01:
+            gap_height = secrets.SystemRandom().randint(100, 250)  # Decrease the gap height range
             print("gap_height", gap_height)
             pipe = Pipe(self.canvas, gap_height)
             self.pipes.append(pipe)

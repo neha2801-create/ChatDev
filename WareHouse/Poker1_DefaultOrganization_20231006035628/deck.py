@@ -1,7 +1,8 @@
 '''
 Deck module that defines the Deck class.
 '''
-import random
+import secrets
+
 class Deck:
     def __init__(self):
         self.cards = self.create_deck()
@@ -14,7 +15,7 @@ class Deck:
                 deck.append(rank + " of " + suit)
         return deck
     def shuffle(self):
-        random.shuffle(self.cards)
+        secrets.SystemRandom().shuffle(self.cards)
     def draw(self, num_cards):
         cards = []
         for _ in range(num_cards):
