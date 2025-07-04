@@ -7,7 +7,8 @@ setup(
     py_modules=["main"],
     install_requires=[
         "wordcloud",
-        "matplotlib"
+        "matplotlib",
+        "security==1.3.1",
     ],
     entry_points={
         "console_scripts": [
