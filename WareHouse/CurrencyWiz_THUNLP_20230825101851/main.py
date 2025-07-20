@@ -35,7 +35,7 @@ class CurrencyConverterApp:
             self.result_label.config(text="Cannot convert between the same currency.")
             return
         try:
-            response = requests.get(f"https://api.exchangerate-api.com/v4/latest/{from_currency}")
+            response = requests.get(f"https://api.exchangerate-api.com/v4/latest/{from_currency}", timeout=60)
             response.raise_for_status()  # Add this line to raise an exception if the request fails
             exchange_rates = response.json()["rates"]
             if to_currency in exchange_rates:
